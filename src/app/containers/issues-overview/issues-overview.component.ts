@@ -10,8 +10,10 @@ export class IssuesOverviewComponent {
 	public tableHeader: object;
 	public tableBody: object;
 
-	public handleCsvObject($event) {
-		this.tableHeader = $event.data.splice(0, 1);
-		this.tableBody = $event.data.splice(0, $event.data.length);
+	public splitCsvObject($event) {
+		if ($event) {
+			this.tableHeader = $event.data.splice(0, 1);
+			this.tableBody = $event.data.splice(0, $event.data.length);
+		}
 	}
 }

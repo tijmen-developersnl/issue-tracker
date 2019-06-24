@@ -7,41 +7,42 @@ import { Papa } from "ngx-papaparse";
 	styleUrls: ["./csv-upload.component.scss"]
 })
 export class CsvUploadComponent {
-	constructor(private papa: Papa) {}
 	@Output() public csvObjectOutput: EventEmitter<object> = new EventEmitter<
 		object
 	>();
-
-	private allowedExtensions = ["csv"];
+	public error;
+	public allowedExtensions = ["csv"];
 	private csvFile: any;
 
-	// checks if word exists in array
-	public static isInArray(array, word) {
-		return array.indexOf(word.toLowerCase()) > -1;
-	}
+	constructor(private papa: Papa) {}
 
-	public fileChanged(e) {
-		this.csvFile = e.target.files[0];
-		const fileExtension = this.csvFile.name.split(".").pop();
+	public fileChanged(event) {
+		this.error = null; // Reset error
+		this.csvFile = event.target.files[0]; // Get uploaded file
 
-		if (CsvUploadComponent.isInArray(this.allowedExtensions, fileExtension)) {
-			this.uploadDocument();
+		if (this.fileExtentionAllowed(this.csvFile)) {
 			this.parseFile(this.csvFile);
 		} else {
-			// TODO: wrong filetype error (issue #4)
+			this.error =
+				"This file format is not allowed. Please upload an valid .scv file.";
 		}
-	}
-
-	public uploadDocument() {
-		const fileReader = new FileReader();
-		fileReader.readAsText(this.csvFile);
 	}
 
 	public parseFile(file) {
 		this.papa.parse(file, {
 			complete: results => {
+				console.log(results);
 				this.csvObjectOutput.emit(results);
 			}
 		});
+	}
+
+	public fileExtentionAllowed(file: File): boolean {
+		const fileExtension = file.name
+			.split(".")
+			.pop()
+			.toLowerCase();
+
+		return this.allowedExtensions.indexOf(fileExtension) > -1;
 	}
 }

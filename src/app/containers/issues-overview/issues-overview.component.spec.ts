@@ -1,6 +1,9 @@
 /* tslint:disable:no-floating-promises */
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
+import { PapaParseModule } from "ngx-papaparse";
+
+import { CsvUploadComponent } from "../../components/csv-upload/csv-upload.component";
 import { IssuesOverviewComponent } from "./issues-overview.component";
 
 describe("IssuesOverviewComponent", () => {
@@ -9,7 +12,8 @@ describe("IssuesOverviewComponent", () => {
 
 	beforeEach(async(() => {
 		TestBed.configureTestingModule({
-			declarations: [IssuesOverviewComponent]
+			declarations: [IssuesOverviewComponent, CsvUploadComponent],
+			imports: [PapaParseModule]
 		}).compileComponents();
 	}));
 
@@ -21,5 +25,11 @@ describe("IssuesOverviewComponent", () => {
 
 	it("should create", () => {
 		expect(component).toBeTruthy();
+	});
+
+	// splitCsvObject($event)
+	xit("should split csv data", () => {
+		// TODO: Add test (issue #7)
+		expect(true);
 	});
 });

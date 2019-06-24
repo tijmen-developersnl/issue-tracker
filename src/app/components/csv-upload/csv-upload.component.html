@@ -2,5 +2,6 @@
 	<div class="upload">
 		<label id="lbl">Upload CSV file </label>
 		<input type="file" (change)="fileChanged($event)" />
+		<p *ngIf="error" class="error">{{ error }}</p>
 	</div>
 </div>

@@ -3,7 +3,7 @@
 		{{ title }}
 	</h1>
 
-	<it-csv-upload (csvObjectOutput)="handleCsvObject($event)"></it-csv-upload>
+	<it-csv-upload (csvObjectOutput)="splitCsvObject($event)"></it-csv-upload>
 
 	<table class="csv">
 		<tr *ngFor="let col of tableHeader">
