@@ -1,0 +1,19 @@
+<div class="container">
+	<h1>
+		{{ title }}
+	</h1>
+
+	<it-csv-upload (csvObjectOutput)="handleCsvObject($event)"></it-csv-upload>
+
+	<table class="csv">
+		<tr *ngFor="let col of tableHeader">
+			<th *ngFor="let row of col">{{ row }}</th>
+		</tr>
+		<tr
+			*ngFor="let col of tableBody; let even = even; let odd = odd"
+			[ngClass]="{ odd: odd, even: even }"
+		>
+			<td *ngFor="let row of col">{{ row }}</td>
+		</tr>
+	</table>
+</div>

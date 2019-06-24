@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { CsvUploadComponent } from "./components/csv-upload/csv-upload.component";
+import { IssuesOverviewComponent } from "./containers/issues-overview/issues-overview.component";
 
-const routes: Routes = [{ path: "", component: CsvUploadComponent }];
+const routes: Routes = [{ path: "", component: IssuesOverviewComponent }];
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],
