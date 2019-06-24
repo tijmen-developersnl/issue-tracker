@@ -1,0 +1,11 @@
+# Angular / NPM file(s)
+package.json
+package-lock.json
+node_modules/*
+
+# Prittier file(s)
+.prittierrc
+
+# Files
+*.ico
+*.md
