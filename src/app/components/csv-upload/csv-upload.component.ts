@@ -31,7 +31,6 @@ export class CsvUploadComponent {
 	public parseFile(file) {
 		this.papa.parse(file, {
 			complete: results => {
-				console.log(results);
 				this.csvObjectOutput.emit(results);
 			}
 		});

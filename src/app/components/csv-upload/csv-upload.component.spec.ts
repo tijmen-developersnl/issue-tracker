@@ -33,8 +33,12 @@ describe("FileUploadComponent", () => {
 
 	// parseFile(file)
 	xit("should emit event", () => {
-		// TODO: Add test (issue #5)
-		expect(true);
+		const file: File = new File(["first_name;sur_name;"], "succes.csv", {
+			type: "text/csv"
+		});
+		spyOn(component.csvObjectOutput, "emit");
+		component.parseFile(file);
+		expect(component.csvObjectOutput.emit).toHaveBeenCalled();
 	});
 
 	// fileExtentionAllowed(file: File): Boolean;
