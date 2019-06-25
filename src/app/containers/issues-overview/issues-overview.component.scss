@@ -1,0 +1,19 @@
+.container {
+	margin: 2em;
+}
+
+.csv {
+	text-align: left;
+
+	& th {
+		padding-right: 1.2em;
+	}
+
+	& .even {
+		background-color: aliceblue;
+	}
+
+	& .odd {
+		background-color: white;
+	}
+}
